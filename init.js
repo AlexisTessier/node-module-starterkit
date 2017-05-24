@@ -3,31 +3,35 @@
 // fill the package json with the package.completion.json keys
 // and ask for variables completions
 
+const fs = require('fs');
+const path = require('path');
+
+const inquirer = require('inquirer');
+
 /*----------------------------------------------*/
 
 const pkg = require('./package.json');
 const completions = require('./package.completion.json');
 
-const completionsVariables = foundObjectVariables(completions);
+completions.author.name = pkg.author;
 
-//replaceObjectVariables(pkg, packageVariables);
+const variables = [];
+findVariables(completions, variables);
+
+replaceVariables(completions, variables).then(()=>{
+	Object.assign(pkg, completions);
+
+	fs.writeFileSync(path.join(__dirname, 'package.json'), JSON.stringify(pkg), {encoding: 'utf-8'});
+});
 
 /*----------------------------------------------*/
 
-function foundObjectVariables(obj) {
-	const objectVariables = {};
-	let containsVariable = false;
-
+function findVariables(obj, variables) {
 	for(const key in obj){
 		let variable = obj[key];
 
 		if (typeof variable === 'object') {
-			variable = foundObjectVariables(variable);
-
-			if (variable) {
-				containsVariable = true;
-				objectVariables[key] = variable;
-			}
+			findVariables(variable, variables);
 		}
 		else if (
 			typeof variable === 'string' &&
@@ -35,26 +39,38 @@ function foundObjectVariables(obj) {
 			variable.indexOf('###') === 0 &&
 			variable.lastIndexOf('###') === (variable.length - 3)
 		) {
-			containsVariable = true;
-			objectVariables[key] = variable.substring(3, variable.length - 3);
+			if(!variables.includes(variable)){
+				variables.push(variable);
+			}
 		}
 	}
-
-	return containsVariable ? objectVariables : null;
 }
 
-function replaceObjectVariables(obj, variables, values = {}){
-	for(const key in obj){
-		const variable = variables[key];
-		if (variable) {
-			const originaValue = obj[key];
+function replaceVariables(obj, objectVariables) {
+	return inquirer.prompt(objectVariables.map(v => ({
+		name: v,
+		message: `enter ${v.substring(3, v.length - 3)}`,
+		validate: input => input.length > 2
+	}))).then(answers => {
+		function rep(obj, vars){
+			for(const key in obj){
+				let field = obj[key];
 
-			if (typeof originaValue === 'object') {
-				replaceObjectVariables(obj[key], variable, values[key] || {})
-			}
-			else if (typeof originaValue === 'string') {
-				obj[key] = values[key] || 'tmp-value'
+				if (typeof field === 'object') {
+					rep(field, vars);
+				}
+				else if (
+					typeof field === 'string'
+				) {
+					for(const varName in vars){
+						const varValue = vars[varName];
+
+						obj[key] = obj[key].replace(new RegExp(varName, 'g'), varValue);
+					}
+				}
 			}
 		}
-	}
+
+		rep(obj, answers);
+	});
 }

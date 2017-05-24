@@ -32,10 +32,10 @@
     "release": "node deployment/release"
   },
   "author": {
-    "name": "###module-author-name###",
+    "name": "",
     "email": "###module-author-mail###",
-    "github": "###module-author-github###",
-    "npm": "###module-author-npm###",
+    "github": "https://github.com/###module-author-github-login###",
+    "npm": "https://www.npmjs.com/~###module-author-npm-login###",
     "login": {
       "github": "###module-author-github-login###",
       "npm": "###module-author-npm-login###"
