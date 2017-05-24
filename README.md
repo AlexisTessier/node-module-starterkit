@@ -1,10 +1,12 @@
 node-module-starterkit
 ======================
 
+A git only starterkit for writing a node module
+
 This is not intended to be used from npm. Directly git clone the repo, then run :
 
 ```
-npm i && node init
+npm run init
 ```
 
 It will:
@@ -14,4 +16,5 @@ It will:
 + ask for some inputs which will be injected in some files
 + remove this README.md
 + remove the node-module-starterkit.gitkeep files
++ remove the init-XX.js files
 + uninstall the unneeded dependencies

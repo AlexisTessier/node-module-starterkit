@@ -1,7 +1,7 @@
 {
-  "name": "###module-name###",
-  "version": "###module-version###",
-  "description": "###module-description###",
+  "name": "node-module-starterkit",
+  "version": "1.0.0",
+  "description": "node-module-starterkit description",
   "main": "index.js",
   "watch": {
     "lint": "./sources",
@@ -33,13 +33,14 @@
     "report": "nyc report --reporter=html --reporter=lcov",
     "build": "npm run entries && npm run documentation",
     "dev": "concurrently \"ttab npm run update-coverage\" \"ttab npm run watch-test\" \"ttab npm run watch\" \"ttab npm run dev-server\"",
-    "release": "node deployment/release"
+    "release": "node deployment/release",
+    "init": "node init-01 && rm -rf init-01.js && rm -rf package.json && npm init && node init-02 && rm -rf init-02.js && npm i && node init-03 && rm -rf init-03.js"
   },
   "repository": {
     "type": "git",
-    "url": "###module-github-repository-url###"
+    "url": "git+https://github.com/AlexisTessier/node-module-starterkit.git"
   },
-  "keywords": "###module-keywords###",
+  "keywords": [],
   "author": {
     "name": "###module-author-name###",
     "email": "###module-author-mail###",
@@ -50,8 +51,8 @@
       "npm": "###module-author-npm-login###"
     }
   },
-  "license": "###module-license###",
-  "homepage": "###module-homepage###",
+  "license": "MIT",
+  "homepage": "https://github.com/AlexisTessier/node-module-starterkit#readme",
   "devDependencies": {
     "@alexistessier/es-lint-config": "^1.0.4",
     "ava": "^0.18.2",
