@@ -1,0 +1,13 @@
+- section: Section Name
+- title: Title
+- subtitle: Subtitle
+- p: >
+    paragraph content
+- js: >
+    // javascript code
+- cli: >
+    // cli code
+- li: list element
+- section: Documentation
+- section: License
+- p: "[###module-license###](###module-license-url###) - [###module-author-name###](###module-author-site-url###) - ###module-license-date###"
