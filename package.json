@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "init": "rm -rf .git && rm -rf package.json && npm init && npm i inquirer@3.0.6 && node init && rm -rf node_modules && rm -rf init.js && rm -rf package.completion.json && npm i && git branch release && rm -rf README.md"
+    "kit": "rm -rf .git && git init && npm i inquirer@3.0.6 && rm -rf package.json && npm init && node init && rm -rf node_modules && rm -rf init.js && rm -rf package.completion.json && npm i && git branch release && rm -rf README.md"
   }
 }

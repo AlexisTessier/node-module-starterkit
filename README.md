@@ -14,7 +14,7 @@ rm -rf .git && git init && git remote add origin [path/to/origin/repository]
 1. Then run the init script
 
 ```
-npm run init
+npm run kit
 ```
 
 It will:
