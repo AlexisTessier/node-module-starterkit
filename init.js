@@ -1,9 +1,16 @@
 'use strict';
 
-const path = require('path');
-const fs = require('fs');
+// fill the package json with the package.completion.json keys
+// and ask for variables completions
 
-const pkg = require('./package.json')
+/*----------------------------------------------*/
+
+const pkg = require('./package.json');
+const completions = require('./package.completion.json');
+
+const completionsVariables = foundObjectVariables(completions);
+
+//replaceObjectVariables(pkg, packageVariables);
 
 /*----------------------------------------------*/
 
@@ -36,10 +43,6 @@ function foundObjectVariables(obj) {
 	return containsVariable ? objectVariables : null;
 }
 
-const packageVariables = foundObjectVariables(pkg);
-
-/*----------------------------------------------*/
-
 function replaceObjectVariables(obj, variables, values = {}){
 	for(const key in obj){
 		const variable = variables[key];
@@ -55,7 +58,3 @@ function replaceObjectVariables(obj, variables, values = {}){
 		}
 	}
 }
-
-replaceObjectVariables(pkg, packageVariables);
-
-fs.writeFileSync(path.join(__dirname, 'tmp.package.json'), JSON.stringify(pkg), {encoding:'utf-8'});
