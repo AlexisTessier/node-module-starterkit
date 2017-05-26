@@ -3,6 +3,8 @@
 // fill the package json with the package.completion.json keys
 // and ask for variables completions
 
+require('hard-rejection')();
+
 const fs = require('fs');
 const path = require('path');
 
@@ -51,7 +53,7 @@ replaceVariables(completions, variables).then(()=>{
 	}
 
 	glob.sync(path.join(__dirname, '**/node-module-starterkit.gitkeep')).forEach(gitkeep => shell.exec(`rm -f ${gitkeep}`));
-}).catch(err => {throw err;process.exit(1);});
+});
 
 /*----------------------------------------------*/
 
@@ -139,7 +141,7 @@ function replaceVariables(obj, variableList) {
 
 				rep(obj, answers);
 				resolve();
-			}).catch(err => reject(err));
+			});
 		}
 
 		const githubRepo = getGithubRepository();
