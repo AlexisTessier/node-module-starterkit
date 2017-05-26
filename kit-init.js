@@ -51,7 +51,7 @@ replaceVariables(completions, variables).then(()=>{
 	}
 
 	glob.sync(path.join(__dirname, '**/node-module-starterkit.gitkeep')).forEach(gitkeep => shell.exec(`rm -f ${gitkeep}`));
-}).catch(err => {throw err;process.exit(1);});
+}).catch(err => {throw err;});
 
 /*----------------------------------------------*/
 
