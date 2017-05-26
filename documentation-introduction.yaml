@@ -9,5 +9,3 @@
     // cli code
 - li: list element
 - section: Documentation
-- section: License
-- p: "[{{{license}}}]({{{licenseUrl}}}) - [{{{author.name}}}]({{{author.github}}}) - {{{licenseDate}}}"

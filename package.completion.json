@@ -41,6 +41,7 @@
       "npm": "###module-author-npm-login###"
     }
   },
+  "licenseDate": "###module-license-date###",
   "devDependencies": {
     "@alexistessier/es-lint-config": "^1.0.4",
     "ava": "^0.18.2",
@@ -60,6 +61,7 @@
     "mustache": "^2.3.0",
     "npm-watch": "^0.1.8",
     "nyc": "^10.2.0",
+    "oss-license-name-to-url": "^1.2.1",
     "read-yaml": "^1.1.0",
     "serve-here": "^3.2.0",
     "shelljs": "^0.7.7"
