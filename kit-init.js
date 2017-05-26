@@ -92,7 +92,7 @@ function findVariables(obj, variables) {
 			findVariables(field, variables);
 		}
 		else if (typeof field === 'string') {
-			const foundVariables = field.match(new RegExp(variableStartMarker+'([a-z]|-|[0-9])'+variableEndMarker), 'ig');
+			const foundVariables = field.match(new RegExp(variableStartMarker+'([a-z]|-|[0-9])'+variableEndMarker, 'ig'));
 
 			if (foundVariables) {
 				foundVariables.forEach(variable => {
