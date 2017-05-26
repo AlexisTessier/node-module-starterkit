@@ -150,7 +150,7 @@ function replaceVariables(obj, variableList) {
 				repo: githubRepo,
 				data: npmToken.token
 			}, (err, blob)=>{
-				if(err){reject(err);return;}
+				if(err){return reject(err);}
 
 				defaultTravisNpmReleaseEncryptedApiKey = blob;
 				promptReplaceResolve();
