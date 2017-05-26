@@ -23,3 +23,8 @@ It will:
 + install the dependencies (npm i)
 + Make an initial commit
 + create a release branch
+
+Important: If you want from the script that it automatically set the travis-npm-release-encrypted-api-key variable, you must :
+
++ have the travis client installed and available in your PATH
++ have a ready to be used github repository, and have sync your account on travis-ci

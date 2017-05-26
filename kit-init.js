@@ -60,15 +60,13 @@ function travisEncrypt({
 	repo,
 	data
 }) {
-	const encryptOutput = shell.exec(`travis encrypt --repo=${repo} ${data}`);
-
-	console.log(encryptOutput)
+	const encryptOutput = shell.exec(`travis encrypt --repo="${repo}" "${data}"`);
 
 	if (encryptOutput.code !== 0) {
 		return null;
 	}
 
-	return null;
+	return ''+eval(encryptOutput.stdout);
 }
 
 function getGitRepositoryUrl() {
@@ -132,7 +130,7 @@ function replaceVariables(obj, variableList) {
 				name: v,
 				message: `enter ${v.substring(variableStartMarker.length, v.length - variableEndMarker.length)}`,
 				validate: input => input.length > 2,
-				default: defaultVariables[v] || undefined
+				default: defaultVariablesGetter[v] || undefined
 			}))).then(answers => {
 				function rep(obj, vars){
 					for(const key in obj){
