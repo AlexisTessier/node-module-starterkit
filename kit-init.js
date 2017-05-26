@@ -14,6 +14,18 @@ const getNpmRegistryAuthToken = require('registry-auth-token');
 
 /*----------------------------------------------*/
 
+const variableStartMarker = '###';
+const variableEndMarker = '###';
+
+let defaultTravisNpmReleaseEncryptedApiKey = undefined;
+const defaultVariablesGetter = {
+	'###travis-npm-release-publisher-email###': answers => answers['###module-author-mail###'],
+	'###travis-npm-release-encrypted-api-key###': () => defaultTravisNpmReleaseEncryptedApiKey,
+	'###travis-npm-release-github-repository-name###': () => getGithubRepository() || undefined
+};
+
+/*----------------------------------------------*/
+
 const pkg = require('./package.json');
 const completions = require('./package.completion.json');
 
@@ -72,9 +84,6 @@ function getGithubRepository() {
 	return null;
 }
 
-const variableStartMarker = '###';
-const variableEndMarker = '###';
-
 function findVariables(obj, variables) {
 	for(const key in obj){
 		let field = obj[key];
@@ -95,14 +104,6 @@ function findVariables(obj, variables) {
 		}
 	}
 }
-
-const defaultTravisNpmReleaseEncryptedApiKey = undefined;
-
-const defaultVariablesGetter = {
-	'###travis-npm-release-publisher-email###': answers => answers['###module-author-mail###'],
-	'###travis-npm-release-encrypted-api-key###': () => defaultTravisNpmReleaseEncryptedApiKey,
-	'###travis-npm-release-github-repository-name###': () => getGithubRepository() || undefined
-};
 
 function replaceVariables(obj, variableList) {
 	if(variableList.length === 0){
