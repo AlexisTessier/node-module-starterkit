@@ -9,9 +9,8 @@ const fs = require('fs');
 const path = require('path');
 
 const inquirer = require('inquirer');
-const shell = require('shelljs')
-const glob = require('glob')
-const travisEncrypt = require('travis-encrypt');
+const shell = require('shelljs');
+const glob = require('glob');
 const getNpmRegistryAuthToken = require('registry-auth-token');
 
 /*----------------------------------------------*/
@@ -56,6 +55,21 @@ replaceVariables(completions, variables).then(()=>{
 });
 
 /*----------------------------------------------*/
+
+function travisEncrypt({
+	repo,
+	data
+}) {
+	const encryptOutput = shell.exec(`travis encrypt --repo=${repo} ${data}`);
+
+	console.log(encryptOutput)
+
+	if (encryptOutput.code !== 0) {
+		return null;
+	}
+
+	return null;
+}
 
 function getGitRepositoryUrl() {
 	if (
@@ -146,20 +160,19 @@ function replaceVariables(obj, variableList) {
 
 		const githubRepo = getGithubRepository();
 		const npmToken = getNpmRegistryAuthToken();
+		const travisCLIInstalled = shell.which('travis');
 
-		if (githubRepo && npmToken && npmToken.token) {
-			travisEncrypt({
+		if (!travisCLIInstalled) {
+			console.log('If you have travis client cli available in your PATH, the travis-npm-release-encrypted-api-key can be setted automatically');
+		}
+
+		if (travisCLIInstalled && githubRepo && npmToken && npmToken.token) {
+			defaultTravisNpmReleaseEncryptedApiKey = travisEncrypt({
 				repo: githubRepo,
 				data: npmToken.token
-			}, (err, blob)=>{
-				if(err){return reject(err);}
-
-				defaultTravisNpmReleaseEncryptedApiKey = blob;
-				promptReplaceResolve();
-			});
+			}) || undefined;
 		}
-		else{
-			promptReplaceResolve()
-		}
+		
+		promptReplaceResolve();
 	});
 }
