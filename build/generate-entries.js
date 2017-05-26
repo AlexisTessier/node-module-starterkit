@@ -4,7 +4,7 @@ const path = require('path');
 
 const readYaml = require('read-yaml');
 
-const entries = readYaml.sync(path.join(__dirname, `../entries.yaml`), {encoding: 'utf-8'});
+const entries = readYaml.sync(path.join(__dirname, `../sources/entries.yaml`), {encoding: 'utf-8'});
 
 /*--------------*/
 
