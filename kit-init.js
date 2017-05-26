@@ -31,13 +31,13 @@ const pkg = require('./package.json');
 const completions = require('./package.completion.json');
 
 completions.author.name = pkg.author;
-completions.travisYAMLContent = fs.readFileSync(path.join(__dirname, 'travis.tpl.yaml'), {encoding: 'utf-8'});
+completions.travisYAMLContent = fs.readFileSync(path.join(__dirname, 'travis.tpl.yml'), {encoding: 'utf-8'});
 
 const variables = [];
 findVariables(completions, variables);
 
 replaceVariables(completions, variables).then(()=>{
-	fs.writeFileSync(path.join(__dirname, '.travis.yaml'), completions.travisYAMLContent, {encoding: 'utf-8'});
+	fs.writeFileSync(path.join(__dirname, '.travis.yml'), completions.travisYAMLContent, {encoding: 'utf-8'});
 
 	delete completions.travisYAMLContent;
 	
