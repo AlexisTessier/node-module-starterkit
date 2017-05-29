@@ -1,4 +1,5 @@
 {
+  "projectStatus": "draft",
   "watch": {
     "lint": "./sources",
     "build": {
