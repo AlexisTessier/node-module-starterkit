@@ -1,5 +1,4 @@
 {
-  "status": "draft",
   "watch": {
     "lint": "./sources",
     "build": {
