@@ -1,12 +1,26 @@
 node-module-starterkit
 ======================
 
-A git only starterkit for writing a node module
+A git starterkit for writing a node module
 
-This is not intended to be used from npm. Directly git clone the repo, then run the init script.
+**Important:** If you want from the script that it automatically set the travis-npm-release-encrypted-api-key variable, you must :
+
++ have the travis client installed and available in your PATH
++ have a ready to be used github repository, and have sync your account on travis-ci
+
+How to use
+----------
+
+Directly git clone the repo:
 
 ```
-npm run kit-init
+git clone https://github.com/AlexisTessier/node-module-starterkit.git new-module-name
+```
+
+Then run the npm init script in the created directory:
+
+```
+cd new-module-name && npm run kit-init
 ```
 
 It will:
@@ -23,8 +37,3 @@ It will:
 + install the dependencies (npm i)
 + Make an initial commit
 + create a release branch
-
-Important: If you want from the script that it automatically set the travis-npm-release-encrypted-api-key variable, you must :
-
-+ have the travis client installed and available in your PATH
-+ have a ready to be used github repository, and have sync your account on travis-ci
