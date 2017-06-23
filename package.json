@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "kit-init": "rm -rf README.md package.json .git && git init && npm init && npm i hard-rejection@1.0.0 registry-auth-token@3.3.1 inquirer@3.0.6 shelljs@0.7.7 glob@7.1.2 jsonlint@1.6.2 && node kit-init && jsonlint --in-place --indent=2 package.json && rm -rf node_modules kit-init.js package.completion.json travis.tpl.yml && npm i && git add . && git commit -a -m 'Initial commit' && git branch release"
+    "kit-init": "rm -rf README.md package.json .git && git init && npm init && npm i hard-rejection@1.0.0 registry-auth-token@3.3.1 inquirer@3.1.1 shelljs@0.7.8 glob@7.1.2 jsonlint@1.6.2 && node kit-init && jsonlint --in-place --indent=2 package.json && rm -rf node_modules kit-init.js package.completion.json travis.tpl.yml && npm i && git add . && git commit -a -m 'Initial commit' && git branch release"
   }
 }
