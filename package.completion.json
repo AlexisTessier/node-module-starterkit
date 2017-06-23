@@ -29,7 +29,8 @@
     "report": "nyc report --reporter=html --reporter=lcov",
     "build": "npm run entries && npm run documentation",
     "dev": "concurrently \"ttab npm run update-coverage\" \"ttab npm run watch-test\" \"ttab npm run watch\" \"ttab npm run dev-server\"",
-    "release": "node deployment/release"
+    "release": "node node_modules/@alexistessier/node-module-starterkit-release-dep",
+    "release-first": "npm run release -- -- first"
   },
   "author": {
     "name": "",
@@ -44,6 +45,7 @@
   "licenseDate": "###module-license-date###",
   "devDependencies": {
     "@alexistessier/es-lint-config": "^1.0.4",
+    "@alexistessier/node-module-starterkit-release-dep": "^1.0.4",
     "ava": "^0.18.2",
     "capitalize": "^1.0.0",
     "concurrently": "^3.4.0",
