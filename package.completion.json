@@ -44,7 +44,7 @@
   },
   "licenseDate": "###module-license-date###",
   "devDependencies": {
-    "@alexistessier/es-lint-config": "^1.1.0",
+    "@alexistessier/es-lint-config": "^1.2.1",
     "@alexistessier/node-module-starterkit-release-dep": "^1.1.1",
     "ava": "^0.18.2",
     "capitalize": "^1.0.0",
