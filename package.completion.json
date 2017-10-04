@@ -30,7 +30,8 @@
     "build": "npm run entries && npm run documentation",
     "dev": "concurrently \"ttab npm run update-coverage\" \"ttab npm run watch-test\" \"ttab npm run watch\" \"ttab npm run dev-server\"",
     "release": "node node_modules/@alexistessier/node-module-starterkit-release-dep",
-    "release-first": "npm run release -- -- first"
+    "release-first": "npm run release -- -- first",
+    "start": "npm run dev"
   },
   "author": {
     "name": "",
@@ -45,7 +46,7 @@
   "licenseDate": "###module-license-date###",
   "devDependencies": {
     "@alexistessier/es-lint-config": "1.5.0",
-    "@alexistessier/node-module-starterkit-release-dep": "1.6.1",
+    "@alexistessier/node-module-starterkit-release-dep": "1.7.0",
     "ava": "0.22.0",
     "capitalize": "1.0.0",
     "concurrently": "3.5.0",
@@ -58,13 +59,13 @@
     "github-markdown-css": "2.8.0",
     "glob": "7.1.2",
     "jsonfile": "4.0.0",
-    "remarkable": "1.7.1",
     "mkdirp": "0.5.1",
     "mustache": "2.3.0",
     "npm-watch": "0.3.0",
     "nyc": "11.2.1",
     "oss-license-name-to-url": "1.2.1",
     "read-yaml": "1.1.0",
+    "remarkable": "1.7.1",
     "serve-here": "3.2.0",
     "shelljs": "0.7.8"
   },
