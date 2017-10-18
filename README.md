@@ -1,7 +1,7 @@
 node-module-starterkit
 ======================
 
-A git starterkit for writing a node module
+A git starterkit to write a node module
 
 **Important:** If you want from the script that it automatically set the travis-npm-release-encrypted-api-key variable, you must :
 
