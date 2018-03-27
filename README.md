@@ -7,6 +7,7 @@ A git starterkit to write a node module
 
 + have the travis client installed and available in your PATH
 + have a ready to be used github repository, and have sync your account on travis-ci
++ be sure that you're not affected by [this issue with travis client -> https://github.com/travis-ci/travis.rb/issues/586](https://github.com/travis-ci/travis.rb/issues/586)
 
 How to use
 ----------
