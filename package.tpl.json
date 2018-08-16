@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "kit-init": "rm -rf test.js build.js README.md package.json .git && git init && npm init && npm i ###DEPENDENCIES_LIST### && rm -f package-lock.json && node kit-init && jsonlint --in-place --indent=2 package.json && rm -rf node_modules kit-init.js package.completion.json travis.tpl.yml && npm i && git add . && git commit -a -m 'Initial commit' && git branch release"
+  }
+}
